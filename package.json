@@ -1,5 +1,5 @@
 {
-  "name": "layui-vue-admin",
+  "name": "innosoft-admin-front",
   "version": "2.0.0",
   "scripts": {
     "dev": "vite",
