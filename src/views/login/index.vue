@@ -18,7 +18,7 @@
           </div>
           <div class="login-ID">
             <div style="font-size: 22px; margin-bottom: 15px; margin-top: 5px">
-              🎯 后台管理系统
+              🎯  注册
             </div>
             <lay-tab type="brief" v-model="method">
               <lay-tab-item title="用户名" id="1">
