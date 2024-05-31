@@ -9,16 +9,16 @@
         <div class="login-container">
           <div class="login-side">
             <div class="login-bg-title">
-              <h1>layui vue admin</h1>
+              <h1>InnoSoft admin</h1>
 
               <h3 style="margin: 20px auto">
-                开 箱 即 用 的 layui vue 企 业 级 前 端 模 板
+                 InnoSoft 后台管理系统
               </h3>
             </div>
           </div>
           <div class="login-ID">
             <div style="font-size: 22px; margin-bottom: 15px; margin-top: 5px">
-              🎯 Sign in
+              🎯  注册
             </div>
             <lay-tab type="brief" v-model="method">
               <lay-tab-item title="用户名" id="1">
@@ -59,7 +59,7 @@
                 </div>
               </lay-tab-item>
             </lay-tab>
-            <lay-line style="margin: 34px 0px;">Other login methods</lay-line>
+            <lay-line style="margin: 34px 0px;">OR</lay-line>
             <ul class="other-ways">
               <li>
                 <div class="line-container">
@@ -70,19 +70,19 @@
               <li>
                 <div class="line-container">
                   <img class="icon" src="../../assets/login/q.svg" />
-                  <p class="text">钉钉</p>
+                  <p class="text">企微</p>
                 </div>
               </li>
               <li>
                 <div class="line-container">
                   <img class="icon" src="../../assets/login/a.svg" />
-                  <p class="text">Gitee</p>
+                  <p class="text">钉钉</p>
                 </div>
               </li>
               <li>
                 <div class="line-container">
                   <img class="icon" src="../../assets/login/f.svg" />
-                  <p class="text">Github</p>
+                  <p class="text">飞书</p>
                 </div>
               </li>
             </ul>
@@ -205,7 +205,7 @@ export default defineComponent({
   bottom: 0;
   right: 0;
   overflow: auto;
-  min-width: 600px;
+  min-width: 320px;
   z-index: 9;
   background-image: url(https://assets.codehub.cn/micro-frontend/login/f7eeecbeccefe963298c23b54741d473.png);
   background-repeat: no-repeat;
@@ -365,4 +365,99 @@ export default defineComponent({
 :deep(.layui-tab-title .layui-this) {
   background-color: transparent;
 }
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+  .login-root {
+    flex-direction: column;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    max-width: none;
+    margin: 10px;
+  }
+
+  .login-side,
+  .login-ID {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-side {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .login-ID {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .login-side h1,
+  .login-side h3 {
+    text-align: center;
+  }
+
+  .login-side h3 {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .login-side {
+    display: none;
+  }
+
+  .login-ID {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .login-ID .layui-form-item {
+    margin-bottom: 10px;
+  }
+
+  .login-ID .layui-tab {
+    width: 100%;
+  }
+
+  .login-ID .layui-btn {
+    width: 100%;
+  }
+
+  .other-ways {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .other-ways li {
+    width: auto;
+    margin: 5px 0;
+  }
+
+  .line-container .icon {
+    height: 24px;
+    width: 24px;
+  }
+}
 </style>
+
