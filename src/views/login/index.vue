@@ -9,16 +9,15 @@
         <div class="login-container">
           <div class="login-side">
             <div class="login-bg-title">
-              <h1>InnoSoft admin</h1>
-
-              <h3 style="margin: 20px auto">
+              <h1>InnoSoft 数字办公系统</h1>
+              <!-- <h3 style="margin: 20px auto">
                  InnoSoft 后台管理系统
-              </h3>
+              </h3> -->
             </div>
           </div>
           <div class="login-ID">
             <div style="font-size: 22px; margin-bottom: 15px; margin-top: 5px">
-              🎯 后台管理系统
+              🎯  注册
             </div>
             <lay-tab type="brief" v-model="method">
               <lay-tab-item title="用户名" id="1">
@@ -37,8 +36,8 @@
                         v-model="loginForm.vercode"></lay-input>
                     </div>
 
-                    <div class="login-captach" @click="toRefreshImg">
-                      <img style="width: 100%" src="../../assets/login/login-yzm.jpg" alt="获取验证码" />
+                    <div class="login-captach" >
+                      <img :src="verificationImgUrl" @click="toRefreshImg" style="width: 100%" alt="获取验证码" />
                     </div>
                   </lay-form-item>
                   <lay-checkbox value="" name="like" v-model="remember" skin="primary" label="1">记住密码</lay-checkbox>
@@ -101,20 +100,22 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '../../store/user'
 import { layer } from '@layui/layer-vue'
 
-export default defineComponent({
+export default {
+  // data中定义
   setup() {
     const router = useRouter()
     const userStore = useUserStore()
     const method = ref('1')
-    const verificationImgUrl = ref('')
     const loging = ref(false);
     const loginQrcodeText = ref('')
     const remember = ref(false)
     const loginForm = reactive({
-      account: 'admin',
-      password: '123456',
-      vercode: 'DqJFN'
+      account: '',
+      password: '',
+      vercode: ''
     })
+
+    const verificationImgUrl = ref('/api/captcha'); // 修改为你的验证码生成脚本路径
 
     const loginSubmit = async () => {
       loging.value = true;
@@ -134,14 +135,9 @@ export default defineComponent({
         }, 1000)
       })
     }
-
-    const toRefreshImg = async () => {
-      let { data, code, msg } = await verificationImg()
-      if (code == 200) {
-        verificationImgUrl.value = data.data
-      } else {
-        layer.msg(msg, { icon: 2 })
-      }
+    //点击刷新图形验证码
+    const toRefreshImg =  () => {
+      verificationImgUrl.value = `/api/captcha?${Date.now()}`;
     }
     const toRefreshQrcode = async () => {
       let { data, code, msg } = await loginQrcode()
@@ -159,10 +155,13 @@ export default defineComponent({
       loginForm,
       remember,
       method,
-      loging
+      loging,
+      verificationImgUrl
     }
   }
-})
+}
+
+
 </script>
 
 <style scoped>
